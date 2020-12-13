@@ -79,9 +79,29 @@ class Wyze {
     return result.data
   }
 
+  /**
+   * logout and remove access_token
+   * @returns {data}
+   */
   async logout() {
-    localStorage.removeItem('access_token')
-    localStorage.removeItem('refresh_token')
+    console.log('Logging Out...')
+    let result
+    try {
+
+      const data = {
+        user_name: this.username,
+        password: md5(md5(this.password)),
+      }
+
+      result = await axios.post(`${this.baseUrl}/app/user/logout`, await this.getRequestBodyData(data))
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('refresh_token')
+    }
+    catch (e) {
+      console.log('logout error...', e)
+      throw e
+    }
+    return result.data
   }
 
   /**
