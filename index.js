@@ -79,6 +79,11 @@ class Wyze {
     return result.data
   }
 
+  async logout() {
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('refresh_token')
+  }
+
   /**
    * get refresh_token
    * @returns {data}
