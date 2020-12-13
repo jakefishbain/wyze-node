@@ -60,7 +60,7 @@ class Wyze {
    * @returns {data}
    */
   async login() {
-    console.log('Login In...')
+    console.log('Logging In...')
     let result
     try {
 
